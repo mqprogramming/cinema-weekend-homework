@@ -84,8 +84,8 @@ ticket1.save()
 ticket2.save()
 ticket3.save()
 
-customer1.funds = 110
-customer1.update()
+# customer1.funds = 110
+# customer1.update()
 
 # customer1.delete()
 

@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('customers')
 
 class Film
 
@@ -50,6 +51,10 @@ class Film
     values = [@id]
     customers = SqlRunner.run(sql, values)
     return customers.map { |customer| Customer.new(customer) }
+  end
+
+  def customer_count()
+    return self.customers.count()
   end
 
 end
