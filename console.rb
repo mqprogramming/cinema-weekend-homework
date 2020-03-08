@@ -3,8 +3,10 @@ require_relative('db/sql_runner.rb')
 require_relative('models/customers.rb')
 require_relative('models/films.rb')
 require_relative('models/tickets.rb')
+require_relative('models/screenings.rb')
 
 Ticket.delete_all()
+Screening.delete_all()
 Customer.delete_all()
 Film.delete_all()
 
@@ -83,6 +85,43 @@ ticket3 = Ticket.new(
 ticket1.save()
 ticket2.save()
 ticket3.save()
+
+screening1 = Screening.new(
+  {
+    'film_time' => '12:00',
+    'film_id' => film1.id
+  }
+)
+screening2 = Screening.new(
+  {
+    'film_time' => '14:15',
+    'film_id' => film2.id
+  }
+)
+screening3 = Screening.new(
+  {
+    'film_time' => '17:30',
+    'film_id' => film3.id
+  }
+)
+screening4 = Screening.new(
+  {
+    'film_time' => '17:30',
+    'film_id' => film1.id
+  }
+)
+screening5 = Screening.new(
+  {
+    'film_time' => '12:00',
+    'film_id' => film1.id
+  }
+)
+
+screening1.save()
+screening2.save()
+screening3.save()
+screening4.save()
+screening5.save()
 
 # customer1.funds = 110
 # customer1.update()

@@ -57,4 +57,21 @@ class Film
     return self.customers.count()
   end
 
+  def screening_time()
+    sql = "SELECT screenings.* FROM screenings
+           WHERE film_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values).map { |screening| Screening.new(screening) }
+    return result[0].film_time
+  end
+
+  def most_popular_time()
+    sql = "SELECT * FROM screenings
+           WHERE film_id = $1"
+    values = [@id]
+    screenings_array = SqlRunner.run(sql, values).map { |screening| Screening.new(screening) }
+    times = screenings_array.map { |screening| screening.film_time }
+    return times.max_by { |time| times.count(time) }
+  end
+
 end
