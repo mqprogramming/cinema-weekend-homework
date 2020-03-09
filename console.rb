@@ -63,29 +63,6 @@ film1.save()
 film2.save()
 film3.save()
 
-ticket1 = Ticket.new(
-  {
-    'customer_id' => customer1.id,
-    'film_id' => film1.id
-  }
-)
-ticket2 = Ticket.new(
-  {
-    'customer_id' => customer2.id,
-    'film_id' => film2.id
-  }
-)
-ticket3 = Ticket.new(
-  {
-    'customer_id' => customer1.id,
-    'film_id' => film3.id
-  }
-)
-
-ticket1.save()
-ticket2.save()
-ticket3.save()
-
 screening1 = Screening.new(
   {
     'film_time' => '12:00',
@@ -112,7 +89,7 @@ screening4 = Screening.new(
 )
 screening5 = Screening.new(
   {
-    'film_time' => '12:00',
+    'film_time' => '12:30',
     'film_id' => film1.id
   }
 )
@@ -122,6 +99,40 @@ screening2.save()
 screening3.save()
 screening4.save()
 screening5.save()
+
+ticket1 = Ticket.new(
+  {
+    'customer_id' => customer1.id,
+    'film_id' => film1.id,
+    'screening_film_time' => screening1.film_time
+  }
+)
+ticket2 = Ticket.new(
+  {
+    'customer_id' => customer2.id,
+    'film_id' => film2.id,
+    'screening_film_time' => screening2.film_time
+  }
+)
+ticket3 = Ticket.new(
+  {
+    'customer_id' => customer3.id,
+    'film_id' => film1.id,
+    'screening_film_time' => screening1.film_time
+  }
+)
+ticket4 = Ticket.new(
+  {
+    'customer_id' => customer1.id,
+    'film_id' => film1.id,
+    'screening_film_time' => screening1.film_time
+  }
+)
+
+ticket1.save()
+ticket2.save()
+ticket3.save()
+ticket4.save()
 
 # customer1.funds = 110
 # customer1.update()

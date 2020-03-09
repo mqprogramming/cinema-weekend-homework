@@ -66,12 +66,16 @@ class Film
   end
 
   def most_popular_time()
-    sql = "SELECT * FROM screenings
-           WHERE film_id = $1"
+    sql = "SELECT * FROM tickets
+           INNER JOIN screenings
+           ON screenings.film_id = tickets.film_id
+           WHERE screenings.film_id = $1"
     values = [@id]
+
     screenings_array = SqlRunner.run(sql, values).map { |screening| Screening.new(screening) }
     times = screenings_array.map { |screening| screening.film_time }
-    return times.max_by { |time| times.count(time) }
+    most_popular_time = times.max_by { |time| times.count(time) }
+    return "Most poplular time is #{most_popular_time} with #{times.count(most_popular_time)} ticket(s) sold."
   end
 
 end
