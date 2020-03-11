@@ -1,5 +1,8 @@
-<h1>
-  <% for film in @film_array %>
-    <a href="/films/<%= film.id %>"> <li> <%= film.title %> </li> </a>
-  <% end %>
-</h1>
+<h1>Our Films</h1>
+<body>
+  <h2>
+    <% for film in @film_array %>
+      <a href="/films/<%= film.id %>"> <ul> <%= film.title %> </ul> </a>
+    <% end %>
+  </h2>
+</body>
